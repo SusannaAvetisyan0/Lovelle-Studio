@@ -28,6 +28,54 @@
 
 .gallery{padding:48px 22px 54px;max-width:720px;margin:auto}
 .gallery h2{font-size:clamp(23px,5vw,34px);font-weight:normal;margin:0 0 26px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,135px),1fr));gap:12px;max-width:600px;margin:auto}
+.gallery-grid a{display:block;max-width:300px;width:100%;margin:auto;border:1px solid #68172c30;padding:5px;border-radius:14px}
+.gallery-grid img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:9px}
+.gallery-grid [hidden]{display:none}
+
+.photo-cover { background: #352028; color: #fffdfa; justify-content: flex-end; }
+.photo-cover::before { z-index: 2; border-color: #fff8; }
+.cover-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
+.photo-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 34%, #220d1760 63%, #220d17db 100%); pointer-events: none; }
+.cover-copy { position: relative; z-index: 3; text-align: center; padding: 0 24px max(56px, calc(env(safe-area-inset-bottom) + 36px)); }
+.cover-copy p { margin: 0 0 22px; font-size: clamp(26px, 5vw, 46px); text-shadow: 0 2px 9px #220d1799; }
+.cover-copy button { min-height: 48px; padding: 12px 24px; border: 1px solid #fffd; border-radius: 2px; background: #fffdfa; color: #68172c; font: inherit; cursor: pointer; }
+@media (min-width: 700px) {
+  .cover-photo { object-fit: cover; background: #f4f4f4; }
+}
+</style></head><body class="locked"><div class="intro photo-cover" id="intro">
+  <img class="cover-photo" src="IMG_0321.jpeg" alt="Մեր ձեռքերը՝ միացած" fetchpriority="high">
+  <div class="cover-copy">
+    <p>Մեր սիրելի հյուր</p>
+    <button id="open" type="button">Բացել հրավիրատոմսը</button>
+  </div>
+</div><main id="invitation" inert><section class="hero"><div class="topline"><span>ENGAGEMENT CELEBRATION</span><span>26 NOVEMBER 2026</span></div><div class="ornament">❦</div><div class="eyebrow">Սիրով հրավիրում ենք</div><h1>Avetisian<span class="amp">&</span>Grigorian</h1><p>Մեր պատմության նոր էջը</p><div class="date">26 · 11 · 2026</div><div class="photo"><img src="IMG_0178.jpeg" alt="Մենք միասին՝ սև ու սպիտակ լուսանկարում" onerror="this.style.display='none'"></div></section><section class="message"><div class="eyebrow">Մի գեղեցիկ սկիզբ</div><h2>Սիրելի՛ հարազատներ և ընկերներ</h2><p>Սիրով հրավիրում ենք ձեզ կիսելու մեր նշանադրության ուրախությունը։ Ձեր ներկայությունը մեր օրը կդարձնի ավելի ջերմ ու հիշարժան։</p><div class="ornament">❦</div></section><section class="details"><div class="eyebrow">Սպասում ենք ձեզ</div><h2>Paradise Hall</h2><p>Նոյեմբերի 26, 2026 · Հինգշաբթի</p><div class="time">17:30</div><button class="calendar" id="calendar">Ավելացնել օրացույցում ↗</button></section><section class="count-wrap"><div class="eyebrow">Մեր օրվան մնացել է</div><div class="count" id="count" aria-label="Հետհաշվարկ"></div></section>
+<section class="gallery" aria-labelledby="gallery-title">
+  <h2 id="gallery-title">Մեր հիշարժան պահերը</h2>
+  <div class="gallery-grid">
+    <a href="IMG_0301.jpeg" aria-label="Բացել առաջին լուսանկարը">
+      <img src="IMG_0301.jpeg" alt="Մեր ֆոտոշարքից" loading="lazy">
+    </a>
+    <a href="couple.jpeg" aria-label="Բացել երկրորդ լուսանկարը">
+      <img src="couple.jpeg" alt="Մենք՝ վարդերի փնջով" loading="lazy">
+    </a>
+  </div>
+</section>
+<footer><div class="line"></div>Սիրով՝ Avetisian & Grigorian</footer></main><script>
+const intro=document.getElementById('intro');document.getElementById('open').onclick=()=>{intro.classList.add('open');document.body.classList.remove('locked');document.getElementById('invitation').inert=false;setTimeout(()=>{intro.hidden=true},1400)};
+const target=new Date('2026-11-26T17:30:00+04:00');function update(){let n=Math.max(0,Math.floor((target-Date.now())/1000));let vals=[Math.floor(n/86400),Math.floor(n/3600)%24,Math.floor(n/60)%60,n%60];document.getElementById('count').innerHTML=vals.map((v,i)=>'<div><b>'+String(v).padStart(2,'0')+'</b><small>'+['օր','ժամ','րոպե','վայրկյան'][i]+'</small></div>').join('')}update();setInterval(update,1000);
+document.getElementById('calendar').onclick=()=>{const data=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Lovelle//Engagement//HY','BEGIN:VEVENT','UID:avetisian-grigorian-20261126@lovelle','DTSTAMP:20261031T120000Z','DTSTART:20261126T133000Z','SUMMARY:Avetisian & Grigorian — Նշանադրություն','LOCATION:Paradise Hall','END:VEVENT','END:VCALENDAR'].join('\r\n');const u=URL.createObjectURL(new Blob([data],{type:'text/calendar;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='engagement.ics';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
+
+</script></body></html>
+s,transform 1.3s}
+.bow:before,.bow:after{display:none}
+.bow svg{width:240px;height:300px;overflow:visible;filter:drop-shadow(1px 3px 2px #68172c10)}
+.open .bow{transform:translateY(50px) rotate(8deg);opacity:0}
+.intro .eyebrow{top:22%;font-size:11px;letter-spacing:.22em}
+.open-label{top:77%;font-size:13px}
+
+.gallery{padding:48px 22px 54px;max-width:720px;margin:auto}
+.gallery h2{font-size:clamp(23px,5vw,34px);font-weight:normal;margin:0 0 26px}
 .slideshow{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:14px;max-width:620px;margin:auto}
 .slide-frame{display:block;width:100%;height:min(70vh,720px);min-height:360px;overflow:hidden;border:1px solid #68172c30;border-radius:16px;background:#f3efec;touch-action:pan-y}
 .slide-frame img{display:block;width:100%;height:100%;object-fit:contain;transition:opacity .22s ease}
